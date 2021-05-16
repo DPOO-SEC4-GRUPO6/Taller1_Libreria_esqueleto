@@ -181,6 +181,61 @@ public class InterfazLibreria extends JFrame
 
 	}
 
+
+	/**
+	 * Cambia la categoría para la cual se deben mostrar los libros en el panel
+	 * panelLibros
+	 * 
+	 * @param categoria La categoría para la que se deben mostrar los libros ahora
+	 */
+	@SuppressWarnings("unused")
+	public void  renombrarCategoria()
+	{
+		try
+		{
+		String nombreCategoria = JOptionPane.showInputDialog(this, "Escriba el nombre de la categoria a la que desea cambiar el nombre", "Categoria");
+		int respuesta = libreria.renombrarCategoria(nombreCategoria);
+		if (respuesta == 1)
+		{
+			String newCategoria = JOptionPane.showInputDialog(this, "Escriba el nuevo nombre de la categoria", "Nuevo nombre");
+			int respuesta1 = libreria.verificarRepeteción(newCategoria);
+			if (respuesta1 == -1)
+			{
+				JOptionPane.showMessageDialog( this, "Ya existe una categoria con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+				
+			}
+			
+			else
+			{
+				
+				int respuesta2 = libreria.nuevoNombre(newCategoria,nombreCategoria);
+				
+					if (respuesta2==1)
+					{
+						
+						JOptionPane.showMessageDialog( this, "Se cambio el nombre con éxito", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+					}
+				
+					else 
+					{
+						JOptionPane.showMessageDialog( this, "Ocurrio un error", "Error", JOptionPane.ERROR_MESSAGE);
+						
+					}
+			}
+		}
+		
+		else
+		{
+			 JOptionPane.showMessageDialog( this, "No se encontro la categoria.", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
+	}
+	
 	/**
 	 * Cambia la categoría para la cual se deben mostrar los libros en el panel
 	 * panelLibros
@@ -213,6 +268,8 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void buscarLibro()
 	{
+		try
+		{
 		String titulo = JOptionPane.showInputDialog(this, "Escriba el título del libro que busca", "titulo");
 		if (titulo != null)
 		{
@@ -227,6 +284,11 @@ public class InterfazLibreria extends JFrame
 				mostrarLibro(libro);
 			}
 		}
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -238,6 +300,8 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void buscarLibrosAutor()
 	{
+		try
+		{
 		String autor = JOptionPane.showInputDialog(this, "Escriba al menos una parte del autor que busca", "autor");
 		if (autor != null)
 		{
@@ -253,6 +317,11 @@ public class InterfazLibreria extends JFrame
 				mostrarLibro(libros.get(0));
 			}
 		}
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -261,7 +330,8 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void buscarCategoriasAutor()
 	{
-
+		try
+		{
 		String autor = JOptionPane.showInputDialog(this, "Escriba el nombre del autor que está buscando", "autor");
 		if (autor != null)
 		{
@@ -281,6 +351,11 @@ public class InterfazLibreria extends JFrame
 				JOptionPane.showMessageDialog(this, mensaje, "Categorías", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -289,21 +364,35 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void calcularCalificacionPromedio()
 	{
-		double calificacion = libreria.calificacionPromedio();
-		calificacion = (double) ((int) calificacion * 1000) / 1000;
-		JOptionPane.showMessageDialog(this, "La calificación promedio de los libros es " + calificacion,
-				"Calificación promedio", JOptionPane.INFORMATION_MESSAGE);
+		try
+		{
+			double calificacion = libreria.calificacionPromedio();
+			calificacion = (double) ((int) calificacion * 1000) / 1000;
+			JOptionPane.showMessageDialog(this, "La calificación promedio de los libros es " + calificacion,
+					"Calificación promedio", JOptionPane.INFORMATION_MESSAGE);
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
 	}
+		}
 
 	/**
 	 * Le informa al usuario cuál es la categoría con más libros en la librería.
 	 */
 	public void categoriaConMasLibros()
 	{
-		Categoria cat = libreria.categoriaConMasLibros();
-		int cantidad = cat.contarLibrosEnCategoria();
-		String mensaje = "La categoría con más libros es " + cat.darNombre() + " y tiene " + cantidad + " libros";
-		JOptionPane.showMessageDialog(this, mensaje, "Categoría con más libros", JOptionPane.INFORMATION_MESSAGE);
+		try
+		{
+			Categoria cat = libreria.categoriaConMasLibros();
+			int cantidad = cat.contarLibrosEnCategoria();
+			String mensaje = "La categoría con más libros es " + cat.darNombre() + " y tiene " + cantidad + " libros";
+			JOptionPane.showMessageDialog(this, mensaje, "Categoría con más libros", JOptionPane.INFORMATION_MESSAGE);
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -312,9 +401,16 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void contarSinPortada()
 	{
-		int cantidad = libreria.contarLibrosSinPortada();
-		String mensaje = "Hay " + cantidad + " libros sin portada";
-		JOptionPane.showMessageDialog(this, mensaje, "Libros sin portada", JOptionPane.INFORMATION_MESSAGE);
+		try
+		{
+			int cantidad = libreria.contarLibrosSinPortada();
+			String mensaje = "Hay " + cantidad + " libros sin portada";
+			JOptionPane.showMessageDialog(this, mensaje, "Libros sin portada", JOptionPane.INFORMATION_MESSAGE);
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -323,13 +419,20 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void categoriaMejorCalificacion()
 	{
-		Categoria cat = libreria.categoriaConMejoresLibros();
-		double calificacion = cat.calificacionPromedio();
-		calificacion = (double) ((int) calificacion * 1000) / 1000;
-		String mensaje = "La categoría con la mejor calificación es " + cat.darNombre()
-				+ ".\nLa calificación promedio de los libros es " + calificacion;
-		JOptionPane.showMessageDialog(this, mensaje, "Categoría con mejor calificación promedio",
-				JOptionPane.INFORMATION_MESSAGE);
+		try
+		{
+			Categoria cat = libreria.categoriaConMejoresLibros();
+			double calificacion = cat.calificacionPromedio();
+			calificacion = (double) ((int) calificacion * 1000) / 1000;
+			String mensaje = "La categoría con la mejor calificación es " + cat.darNombre()
+					+ ".\nLa calificación promedio de los libros es " + calificacion;
+			JOptionPane.showMessageDialog(this, mensaje, "Categoría con mejor calificación promedio",
+					JOptionPane.INFORMATION_MESSAGE);
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	/**
@@ -338,6 +441,8 @@ public class InterfazLibreria extends JFrame
 	 */
 	public void hayAutorEnVariasCategorias()
 	{
+		try
+		{
 		boolean hay = libreria.hayAutorEnVariasCategorias();
 		String mensaje = "No hay ningún autor con al menos un libro en dos categorías diferentes.";
 		if (hay)
@@ -345,6 +450,11 @@ public class InterfazLibreria extends JFrame
 			mensaje = "Hay al menos un autor con al menos un libro en dos categorías diferentes.";
 		}
 		JOptionPane.showMessageDialog(this, mensaje, "Consulta", JOptionPane.INFORMATION_MESSAGE);
+		}catch(NullPointerException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Cargue los archivos", "ERROR", JOptionPane.ERROR_MESSAGE );
+			
+		}
 	}
 
 	// ************************************************************************

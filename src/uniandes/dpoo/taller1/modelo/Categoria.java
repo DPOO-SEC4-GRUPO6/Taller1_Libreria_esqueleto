@@ -7,9 +7,9 @@ import java.util.Set;
 import uniandes.dpoo.taller1.modelo.Libro;
 
 /**
- * Esta clase representa a una categoría de libros dentro de la librería. Cada
- * categoría tiene un nombre único y además sabe si es una categoría a la que
- * pertenecen libros de ficción o no.
+ * Esta clase representa a una categorï¿½a de libros dentro de la librerï¿½a. Cada
+ * categorï¿½a tiene un nombre ï¿½nico y ademï¿½s sabe si es una categorï¿½a a la que
+ * pertenecen libros de ficciï¿½n o no.
  */
 public class Categoria
 {
@@ -18,21 +18,21 @@ public class Categoria
 	// ************************************************************************
 
 	/**
-	 * Nombre de la categoría
+	 * Nombre de la categorï¿½a
 	 */
 	private String nombre;
 
 	/**
-	 * Indica si la categoría corresponde a libros de ficción o no
+	 * Indica si la categorï¿½a corresponde a libros de ficciï¿½n o no
 	 */
 	private boolean ficcion;
 
 	/**
-	 * Lista de libros que hacen parte de la categoría
+	 * Lista de libros que hacen parte de la categorï¿½a
 	 */
 	private ArrayList<Libro> libros;
 	/*
-	 * TODO Parte 3 - agregar una asociación a la clase Libro llamada libros, que
+	 * TODO Parte 3 - agregar una asociaciï¿½n a la clase Libro llamada libros, que
 	 * sea una lista de Libro
 	 */
 
@@ -46,18 +46,18 @@ public class Categoria
 		this.ficcion = ficcion;
 		this.libros = new ArrayList<Libro>();
 		/*
-		 * TODO Parte 3 - inicializa la lista de libros con una lista vacía. Si esto no
-		 * se hace al construir la categoría, la lista de libros sería null y todas las
-		 * instrucciones para agregar libros fallarían.
+		 * TODO Parte 3 - inicializa la lista de libros con una lista vacï¿½a. Si esto no
+		 * se hace al construir la categorï¿½a, la lista de libros serï¿½a null y todas las
+		 * instrucciones para agregar libros fallarï¿½an.
 		 */
 	}
 
 	// ************************************************************************
-	// Métodos para consultar los atributos
+	// Mï¿½todos para consultar los atributos
 	// ************************************************************************
 
 	/**
-	 * Consulta el nombre de la categoría
+	 * Consulta el nombre de la categorï¿½a
 	 * 
 	 * @return Categoria
 	 */
@@ -66,8 +66,13 @@ public class Categoria
 		return nombre;
 	}
 
+	public void cambiarNombre(String nuevoNombre)
+	{
+		nombre = nuevoNombre;
+		
+	}
 	/**
-	 * Consulta si esta es una categoría de ficción o no, con base en el atributo
+	 * Consulta si esta es una categorï¿½a de ficciï¿½n o no, con base en el atributo
 	 * ficcion.
 	 * 
 	 * @return ficcion
@@ -78,7 +83,7 @@ public class Categoria
 	}
 
 	/**
-	 * Retorna la lista de libros que hacen parte de la categoría
+	 * Retorna la lista de libros que hacen parte de la categorï¿½a
 	 * 
 	 * @return libros
 	 * 
@@ -88,16 +93,16 @@ public class Categoria
 	{
 		// cambien el valor de retorno de ArrayList<Libro> a List<Libro>
 		//PENDIENTE
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
 		return libros;
 	}
 
 	// ************************************************************************
-	// Otros métodos
+	// Otros mï¿½todos
 	// ************************************************************************
 
 	/**
-	 * Agrega un nuevo libro a la categoría
+	 * Agrega un nuevo libro a la categorï¿½a
 	 * 
 	 * @param nuevoLibro El nuevo libro que se va a agregar.
 	 */
@@ -105,13 +110,13 @@ public class Categoria
 	{
 		libros.add(nuevoLibro);
 		// LISTO
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
 	}
 
 	
 	
 	/**
-	 * Cuenta la cantidad de libros en la categoría
+	 * Cuenta la cantidad de libros en la categorï¿½a
 	 * 
 	 * @return Cantidad de libros
 	 */
@@ -125,15 +130,15 @@ public class Categoria
 			//if (!numlibros.contains(book))
 				//numlibros.add(book);
 		//}
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
-		// En este punto no debería tener que hacer ningún recorrido
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
+		// En este punto no deberï¿½a tener que hacer ningï¿½n recorrido
 		//return numlibros.size();
 	}
 
 	/**
-	 * Calcula la calificación promedio de los libros que pertenecen a la categoría
+	 * Calcula la calificaciï¿½n promedio de los libros que pertenecen a la categorï¿½a
 	 * 
-	 * @return Calificación promedio
+	 * @return Calificaciï¿½n promedio
 	 */
 	public double calificacionPromedio()
 	{
@@ -147,21 +152,21 @@ public class Categoria
 			}
 		promedio = calificaciones/numerocalificaciones;
 		
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
-		// En este punto tendrá que recorrer la lista de libros
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
+		// En este punto tendrï¿½ que recorrer la lista de libros
 		return promedio;
 	}
 
 	
 
 	/**
-	 * Consulta si en la categoría hay algún libro escrito por el autor indicado.
+	 * Consulta si en la categorï¿½a hay algï¿½n libro escrito por el autor indicado.
 	 * 
-	 * La búsqueda del autor se hace de forma exacta (tiene que ser idéntico al
-	 * valor indicado en el parámetro nombreAutor).
+	 * La bï¿½squeda del autor se hace de forma exacta (tiene que ser idï¿½ntico al
+	 * valor indicado en el parï¿½metro nombreAutor).
 	 * 
 	 * @param nombreAutor El nombre del autor para el que se quiere hacer la
-	 *                    búsqueda.
+	 *                    bï¿½squeda.
 	 * @return Retorna true si hay al menos un libro cuyo autor es el autor buscado.
 	 *         Retorna false de lo contrario.
 	 */
@@ -175,7 +180,7 @@ public class Categoria
 					exist = true;
 				}
 			}
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
 		return exist;
 	}
 
@@ -183,13 +188,13 @@ public class Categoria
 	
 	
 	/**
-	 * Busca en la categoría los libros escritos por el autor indicado.
+	 * Busca en la categorï¿½a los libros escritos por el autor indicado.
 	 * 
-	 * El nombre del autor puede estar incompleto, y la búsqueda no debe tener en
-	 * cuenta mayúsculas y minúsculas. Por ejemplo, si se buscara por "ulio v"
-	 * deberían encontrarse los libros donde el autor sea "Julio Verne".
+	 * El nombre del autor puede estar incompleto, y la bï¿½squeda no debe tener en
+	 * cuenta mayï¿½sculas y minï¿½sculas. Por ejemplo, si se buscara por "ulio v"
+	 * deberï¿½an encontrarse los libros donde el autor sea "Julio Verne".
 	 * 
-	 * @param cadenaAutor La cadena que se usará para consultar el autor. No
+	 * @param cadenaAutor La cadena que se usarï¿½ para consultar el autor. No
 	 *                    necesariamente corresponde al nombre completo de un autor.
 	 * @return Una lista con todos los libros cuyo autor coincida con la cadena
 	 *         indicada
@@ -205,18 +210,18 @@ public class Categoria
 			}
 		
 		}
-		//PENDIENTE SE PUEDE AÑADIR EL MÉTODO EQUALIGNORECASE
-		// TODO Parte 3 - completar el método de acuerdo a la documentación
+		//PENDIENTE SE PUEDE Aï¿½ADIR EL Mï¿½TODO EQUALIGNORECASE
+		// TODO Parte 3 - completar el mï¿½todo de acuerdo a la documentaciï¿½n
 		// Recuerde retornar una lista nueva (no la lista del atributo libros)
 		return librosautor;
 	}
 
 	// ************************************************************************
-	// Métodos sobrecargados
+	// Mï¿½todos sobrecargados
 	// ************************************************************************
 
 	/**
-	 * Este método permite representar una categoría como una cadena de caracteres
+	 * Este mï¿½todo permite representar una categorï¿½a como una cadena de caracteres
 	 */
 	@Override
 	public String toString()

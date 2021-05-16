@@ -324,6 +324,87 @@ public class Libreria
 		return librosAutor;
 	}
 
+	
+	/*
+	 * 
+	 * verifica que el nombre nuevo no este repetido en los nombres de la categoria
+	 */
+	public int  verificarRepeteción(String nombre)
+	{
+		int si = 1;
+		for (int i = 0; i < categorias.length ;i++)
+		{
+			if ((categorias[i].darNombre().equals(nombre)))
+			{
+				si = -1;
+			}	
+		
+		}
+		return si;
+	}
+	
+	
+	
+	/**
+	 * Cambia el nombre de una categoria
+	 * 
+	 * @param nuevo nombre de la categoria
+	 * @return Una lista con las categorías en las cuales hay al menos un libro del
+	 *         autor indicado. Si no hay un libro del autor en ninguna categoría,
+	 *         retorna una lista vacía.
+	 */
+	public int  nuevoNombre(String nombre, String nombreCategoria)
+	{
+		int si = -1;
+		for (int i = 0; i < categorias.length ;i++)
+		{
+			//System.out.println("paso por aqui");
+			if ((categorias[i].darNombre().equals(nombreCategoria)))
+			{
+				categorias[i].cambiarNombre(nombre);
+				//System.out.println("Tambien ");
+				si = 1;
+			}	
+		}
+		return si;
+	}
+	
+
+	/**
+	 * 
+	 * vefirica que la categoria a la que se le quiere cambiar el nombre esté
+	 * @param nombreCategoria
+	 * @return
+	 */
+	public int renombrarCategoria(String nombreCategoria)
+	{
+		int si = 0; 
+		
+		for (int i = 0; i < categorias.length ;i++)
+		{
+				if ((categorias[i].darNombre().equals(nombreCategoria)))
+				{
+					si = 1;
+				}
+		}
+		return si;
+	}
+
+		/*
+		 * TODO Parte 2 - recorra el arreglo de categorias, haciendo un recorrido total.
+		 * En cada categoría, busque si en esa categoría hay libros que hayan sido
+		 * escritos por el autor indicado. Si es así, agregue la categoría a la lista de
+		 * categorías que se encuentra en la variable 'resultado'.
+		 * 
+		 * Para agregar un elemento a una lista puede utilizar el método add.
+		 */
+		
+		
+
+	
+	
+
+	
 	/**
 	 * Busca en qué categorías hay libros del autor indicado.
 	 * 
